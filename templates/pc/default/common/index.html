@@ -1,0 +1,19 @@
+{template "header.html"}
+		<div class="content" id="content">
+		{list action=module module=news catid=$catid page=1 pagesize=12 urlrule=index.php?page=[page] order=displayorder,updatetime}
+			<ul class="img-list">
+				<li>
+					<a href="{$t.url}">
+						<img src="{dr_get_file($t.thumb)}" alt="">
+						<p>{$t.title}</p>
+					</a>
+				</li>
+			</ul>
+		{/list}
+		</div>
+		<div class="num">
+			<ul >
+			{$pages}
+			</ul>
+		</div>
+{template "footer.html"}

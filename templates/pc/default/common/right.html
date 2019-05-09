@@ -1,0 +1,42 @@
+                <div class="blog-main-right">
+                <div class="article-category shadow">
+                    <div class="article-category-title">分类导航</div>
+
+                    <!--循环同级栏目或者子栏目-->
+                    {loop $related $c}
+                    <a href="{$c.url}">{$c.name}</a>
+                    {/loop}
+                    <div class="clear"></div>
+                </div>
+
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">相关文章</div>
+                    <ul class="fa-ul blog-module-ul">
+                        <!--此标签用于调用相关文章，tag=关键词1,关键词2，多个关键词,分隔，num=显示条数，field=显示字段-->
+                        {list action=related id=$id catid=$catid field=title,url,updatetime tag=$tag num=10}
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="{$t.url}">{dr_strcut($t.title, 35)}</a></li>
+                        {/list}
+                    </ul>
+                </div>
+
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">本类热门</div>
+                    <ul class="fa-ul blog-module-ul">
+                        {list action=module catid=$catid order=hits num=10}
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="{$t.url}">{dr_strcut($t.title, 35)}</a></li>
+
+                        {/list}
+                    </ul>
+                </div>
+                <br>
+                
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">随便看看</div>
+                    <ul class="fa-ul blog-module-ul">
+                        {list action=module catid=$catid order=rand num=10}
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="{$t.url}">{dr_strcut($t.title, 35)}</a></li>
+                        {/list}
+                    </ul>
+                </div>
+
+            </div>

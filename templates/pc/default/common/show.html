@@ -1,0 +1,47 @@
+{template "header.html"}
+<link href="{HOME_THEME_PATH}css/detail.css" rel="stylesheet" />
+<div class="blog-body">
+    <div class="blog-container">
+        <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow" style="margin-left: 10px;">
+            <a href="/" title="网站首页">网站首页</a>
+            {dr_catpos($catid, '', true, '<a href="[url]">[name]</a>')}
+            <!-- <a><cite>列表</cite></a> -->
+        </blockquote>
+
+
+        <div class="blog-main">
+            <div class="blog-main-left">
+
+                <div class="article-detail shadow">
+                    <div class="article-detail-title">
+                        {$title}
+                    </div>
+                    <div class="article-detail-info">
+                        <span>编辑时间：{$updatetime}</span>
+                        <span>作者：{$author}</span>
+                        <span>浏览量：{dr_show_hits($id)}次</span>
+                    </div>
+                    <div class="article-detail-content">
+                       {$content}
+                    </div>
+                    <div class="blog-single-foot">
+                        <div class="blog-post-tags">
+                            {loop $keyword_list $name $url}
+                                <a href="{$url}" target="_blank">{$name}</a>
+                            {/loop}
+                        </div>
+                        <p class="f14" style="margin-top: 10px">
+                            <strong>上一篇：</strong>{if $prev_page}<a href="{$prev_page.url}">{$prev_page.title}</a>{else}没有了{/if}<br>
+                            <strong>下一篇：</strong>{if $next_page}<a href="{$next_page.url}">{$next_page.title}</a>{else}没有了{/if}
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{template "footer.html"}

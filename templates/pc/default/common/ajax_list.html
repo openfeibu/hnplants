@@ -1,0 +1,18 @@
+<div class="content" id="content">
+    {list action=sql module=$mid sql='$search_sql' page=1 pagesize=12 urlrule=$urlrule}
+    <ul class="img-list">
+        <li>
+            <a href="{$t.url}" target="_blank">
+                <img src="{dr_get_file($t.thumb)}" alt="">
+                <p>{$t.title}</p>
+            </a>
+        </li>
+    </ul>
+    {/list}
+</div>
+<div class="num page">
+    <ul >
+        <?php $pages = str_replace("href","ajax-href",$pages);?>
+        {$pages}
+    </ul>
+</div>
