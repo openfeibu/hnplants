@@ -48,11 +48,8 @@ class Search extends M_Controller {
         $page = max(1, (int)$_GET['page']);
 		$get['keyword'] = str_replace(array('%', ' '), array('', '%'), urldecode($get['keyword']));
 		unset($get['c'], $get['m'], $get['id'], $get['page']);
-		if (!$get['mid']) {
-            $this->msg(fc_lang('缺少mid参数'));
-        }
 
-        $this->dir = $get['mid'];
+        $this->dir = 'news';
         $this->_module_init($this->dir);
 
         $this->load->model('search_model');
